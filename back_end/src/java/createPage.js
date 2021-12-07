@@ -3,6 +3,7 @@ const fs = require("fs");
 module.exports = (data) => {
   const model = data.nome_tabela.substring(0,1).toUpperCase()+data.nome_tabela.substring(1,100);
   const linkLista= "${linkTo["+model+"Controller].lista}";
+  const linkNovo= "${linkTo["+model+"Controller].novo}";
   const varLista="${lista}";
   const varCodigo="${e.codigo}";
   const linkVisualiza="${linkTo["+model+"Controller].visualizar[e]}";
@@ -28,7 +29,7 @@ module.exports = (data) => {
 						<tr class="well">
 							<th style="width: 100px;">Código</th>
 							<th style="width: 36px;">
-                <a class="btn btn-xs btn-success" href="${linkLista}"><span
+                <a class="btn btn-xs btn-success" href="${linkNovo}"><span
 								  class="glyphicon glyphicon-plus"> </span></a></th>
 						</tr>						
 					</thead>
@@ -99,8 +100,8 @@ fs.writeFileSync(__dirname+'/documentos/visualizar.jsp', `
 <layout:template>
 	<jsp:body>
 		<div class="page-header">
-			<h3>${model} <small>Visualizar</small>
-			</h3>
+			<h3>${model} <small>Visualizar</small></h3>
+		</div>
 			<br />
 			<form class="form-horizontal" action="${linkAlterar}" method="post"
 			id="form">
@@ -119,8 +120,6 @@ fs.writeFileSync(__dirname+'/documentos/visualizar.jsp', `
 				</div>
 				
 			</form>
-				
-		</div>
 	</jsp:body>
 </layout:template>`);
 
@@ -218,13 +217,16 @@ function criarInputs(e,variavelModel,mostrarVariavelValue){
 		label="${e.nome}" value="${variavelValue}" divClass="col-sm-${e.tamanho}"></components:inputDataNovo>`;
 	}else if(e.tipo === "model"){
 		return `<components:selectNovo label="${e.nome}" i18n="false" id="" value="${variavelValue}" 
-			name="${variavelModel}.${e.nome}" itens="${variavelListSelect}" divClass="col-sm-${e.tamanho}"></components:selectNovo>`;
+			name="${variavelModel}.${e.nome}.codigo" itens="${variavelListSelect}" divClass="col-sm-${e.tamanho}"></components:selectNovo>`;
 	}else if(e.tipo === "Integer"){
 		return `<components:inputNovo type="number" name="${variavelModel}.${e.nome}" id="" 
 		label="${e.nome}" value="${variavelValue}" divClass="col-sm-${e.tamanho}"></components:inputNovo>`;
 	}else if(e.tipo === "BigDecimal"){
 		return `<components:inputMoneyNovo label="${e.nome}" id="" value="${variavelValue}" name="${variavelModel}.${e.nome}"
 		divClass="col-sm-${e.tamanho}"></components:inputMoneyNovo>`;
+	}else if(e.tipo === "String"){
+		return `<components:inputNovo name="${variavelModel}.${e.nome}" id="" 
+		label="${e.nome}" value="${variavelValue}" divClass="col-sm-${e.tamanho}"></components:inputNovo>`;
 	}else if(e.tipo === "list"){
 		criaVisualizacaoModal(e);
 		criaNovoModal(e);

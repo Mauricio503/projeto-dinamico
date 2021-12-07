@@ -7,10 +7,10 @@
 <layout:template>
 	<jsp:body>
 		<div class="page-header">
-			<h3>HorasMaquina <small>Visualizar</small>
+			<h3>FormaPagamento <small>Visualizar</small>
 			</h3>
 			<br />
-			<form class="form-horizontal" action="${linkTo[HorasMaquinaController].alterar[entidade]}" method="post"
+			<form class="form-horizontal" action="${linkTo[FormaPagamentoController].alterar[entidade]}" method="post"
 			id="form">
 
 				<div class="row">
@@ -19,7 +19,7 @@
 				<div class="row">
 					<div class="clearfix form-actions">
 						<div class="pull-right">
-							<a class="btn btn-default" type="button" href="${linkTo[HorasMaquinaController].novo}">Voltar</a>
+							<a class="btn btn-default" type="button" href="${linkTo[FormaPagamentoController].lista}">Voltar</a>
 							<button class="btn btn-primary" type="submit" name="_method" value="put">Salvar</button> 
 							<button class="btn btn-danger" type="submit" name="_method" value="delete">Excluir</button>
 						</div>

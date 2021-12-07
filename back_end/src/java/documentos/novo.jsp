@@ -15,11 +15,11 @@
 	</jsp:attribute>
 	<jsp:body>
 			<div class="page-header">
-				<h3>HorasMaquina  <small>Novo</small>
+				<h3>FormaPagamento  <small>Novo</small>
 			</h3>
 			</div>
 			
-			<form class="form-horizontal" action="${linkTo[HorasMaquinaController].salvar}" method="post"
+			<form class="form-horizontal" action="${linkTo[FormaPagamentoController].salvar}" method="post"
 			id="form">
 				<div class="row">
 				<c:import url="campos.jsp" />
@@ -27,7 +27,7 @@
 				<div class="row">
 					<div class="clearfix form-actions">
 						<div class="pull-right">
-						<a class="btn btn-default" type="button" href="${linkTo[HorasMaquinaController].novo}">Voltar</a>
+						<a class="btn btn-default" type="button" href="${linkTo[FormaPagamentoController].lista}">Voltar</a>
 							<button class="btn btn-primary" type="submit">Salvar</button>
 						</div>
 					</div>

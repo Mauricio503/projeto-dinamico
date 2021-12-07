@@ -9,7 +9,7 @@
 <layout:template>
 	<jsp:body>
 			<div class="page-header" style="width: 100%; display: inline-block;">
-				<h3>HorasMaquinas</a>
+				<h3>FormaPagamentos</a>
 				</h3>
 								
 			</div>
@@ -20,7 +20,7 @@
 						<tr class="well">
 							<th style="width: 100px;">Código</th>
 							<th style="width: 36px;">
-                <a class="btn btn-xs btn-success" href="${linkTo[HorasMaquinaController].novo}"><span
+                <a class="btn btn-xs btn-success" href="${linkTo[FormaPagamentoController].novo}"><span
 								  class="glyphicon glyphicon-plus"> </span></a></th>
 						</tr>						
 					</thead>
@@ -29,7 +29,7 @@
 							<tr>
 								<td>${e.codigo}</td>
 								<td>
-									<a class="btn btn-xs btn-primary" type="button" href="${linkTo[HorasMaquinaController].visualizar[e]}"><span
+									<a class="btn btn-xs btn-primary" type="button" href="${linkTo[FormaPagamentoController].visualizar[e]}"><span
 									class="glyphicon glyphicon-pencil"></span></a>
 								</td>
 							</tr>						
