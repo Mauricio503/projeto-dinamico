@@ -8,7 +8,7 @@ module.exports = (data) => {
   const model = primeiraLetraMaiuscula(data.nome_tabela);
         fs.writeFileSync(__dirname+'/documentos/'+model+'Controller.java', `
         @Resource
-@Path("${data.nome_tabela}")
+@Path("/${data.nome_tabela}")
 public class ${model}Controller {
 
 	@Autowired
@@ -35,7 +35,7 @@ public class ${model}Controller {
 	@Post("/novo")
 	public void salvar(${model} entidade) {
 		${data.nome_tabela}Repository.save(entidade);
-    result.redirectTo(this).lista();
+    	result.redirectTo(this).lista();
 	}
 
 	@Get("/visualizar/{entidade.codigo}")
@@ -57,7 +57,7 @@ public class ${model}Controller {
 
 	${data.colunas.map(c => {
 		if(c.tipo === "list"){
-		  return `@Get("/visualiza${primeiraLetraMaiuscula(c.nome)}")
+		  return `@Get("/visualiza${primeiraLetraMaiuscula(c.nome)}/{${c.nome}.codigo}")
 		public void visualiza${primeiraLetraMaiuscula(c.nome)}(${primeiraLetraMaiuscula(c.nome)} ${c.nome}) {
 			result.include("${c.nome}", ${c.nome}Repository.findOne(${c.nome}.getCodigo()));
 		}

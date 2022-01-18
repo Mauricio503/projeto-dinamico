@@ -15,22 +15,12 @@ function criarParametros(parametro){
         return `    private ${parametro.tipo}`;
     }
 }
-function somenteTipoEVariavel(p){
-    if(p.tipo === "model"){
-        return p.nome.substring(0,1).toUpperCase()+p.nome.substring(1,100)+" "+p.nome;
-    }else{
-        return p.tipo+" "+p.nome;
-    }
-}
 module.exports = (data) => {
     const model = data.nome_tabela.substring(0,1).toUpperCase()+data.nome_tabela.substring(1,100)
     fs.writeFileSync(__dirname+'/documentos/'+model+'.java', 
         
 `@Entity
-@Executivo
-@Legislativo
-@Cadastros
-public class ${model} implements EntidadePersistente, LabelValue {
+public class ${model} implements EntidadePersistente<${model}>, LabelValue {
     
     @Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "seq_${data.nome_tabela}")
