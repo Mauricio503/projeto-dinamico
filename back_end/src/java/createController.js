@@ -9,6 +9,7 @@ module.exports = (data) => {
         fs.writeFileSync(__dirname+'/documentos/'+model+'Controller.java', `
         @Resource
 @Path("/${data.nome_tabela}")
+@PermiteAcessoUrlN2(menuN2 = MenuN2., necesitaAtivo = false)
 public class ${model}Controller {
 
 	@Autowired
